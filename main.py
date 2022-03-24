@@ -9,6 +9,7 @@ import webbrowser
 from xml.dom.minidom import ElementInfo
 import xml.etree.ElementTree as ET
 from ListaCiudades import ListaCiudades
+from ListaUniMilitar import ListaUniMilitar
 
 class Ventana(QMainWindow):
     def __init__(self):
@@ -37,7 +38,10 @@ class Ventana(QMainWindow):
         nom =""
         global ciudades
         ciudades = ListaCiudades()
+        global unimilitar
+        unimilitar = ListaUniMilitar()
         print("===== ¡ARCHIVO LEIDO CORRECTAMENTE! ====")
+        #Lista Ciudades
         for elemento in raiz.iter('listaCiudades'):
             for subelemento in elemento.iter('ciudad'):
                 #ciudades
@@ -49,9 +53,16 @@ class Ventana(QMainWindow):
                     elem = ciudades.getCiudad(nombre)
                     elem.lista_fila.insertarFila(subsubelemento1.attrib['numero'],subsubelemento1.text)
                 #Unidad militar
-                for subsubelemento2 in subelemento.iter('nombre'):
-                    nombre = subsubelemento.text
-                    ciudades.insertarCiudad(subsubelemento.attrib['filas'], subsubelemento.attrib['columnas'], nombre)
+                for subsubelemento2 in subelemento.iter('unidadMilitar'):
+                    elem.lista_unimilitar.insertarUniMili(subsubelemento.attrib['fila'], subsubelemento.attrib['columna'],subsubelemento2.text)
+        #Lista Robots
+        for elemento1 in raiz.iter('robots'):
+            for subele in elemento1.iter('robot'):
+                #robots
+                for subsubele in subele.iter('nombre'):
+                    ciudades.insertarCiudad(subsubele.attrib['tipo'], subsubele.attrib['capacidad'],subsubele.text)
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
