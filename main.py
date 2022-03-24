@@ -8,6 +8,7 @@ from tkinter import filedialog
 import webbrowser
 from xml.dom.minidom import ElementInfo
 import xml.etree.ElementTree as ET
+from ListaCiudades import ListaCiudades
 
 class Ventana(QMainWindow):
     def __init__(self):
@@ -27,45 +28,30 @@ class Ventana(QMainWindow):
         #ciudades = ListaCiudades()
         global nombre, filas, columnas, numero, unidad, tipo, capacidad, nom
         nombre = ""
-        r = ""
-        c = ""
-        f = ""
-        s = ""
-        codigo = ""
-        patron = ""
+        filas = ""
+        columnas = ""
+        numero = ""
+        unidad = ""
+        tipo = ""
+        capacidad = ""
+        nom =""
+        global ciudades
+        ciudades = ListaCiudades()
         print("===== ¡ARCHIVO LEIDO CORRECTAMENTE! ====")
-        for elemento in raiz:
-            nombre = elemento.attrib['nombre']
-            # Pisos
-            for belemento in elemento.iter('R'):
-                r = belemento.text
-            for belemento in elemento.iter('C'):
-                c = belemento.text
-            for belemento in elemento.iter('F'):
-                f = belemento.text
-            for belemento in elemento.iter('S'):
-                s = belemento.text
-
-            pisos.insertarSimpleEnla(
-                    nombre, r, c,f,s)
-            # Patrones
-            for subelemento in elemento.iter('patron'):
-                global elem,elem1
-                elem = pisos.getPiso(nombre)
-                codigo=subelemento.attrib['codigo']
-                patron=subelemento.text
-                patron=patron.replace(" ","")
-                patron=patron.replace("\n","")   
-                elem.lista_patron.insertarSimpleEnlaPa(codigo, patron)
-                # Celdas
-                elem1= elem.lista_patron.getPatron(codigo)
-                longi = list(patron)
-                divi=[longi[j:j + int(c)] for j in range(0,len(longi),int(c))]
-                for i in range(int(r)):
-                    for o in range(int(c)):
-                        color=str(divi[i][o])
-                        elem1.lista_celda.insertarCelda(str(i),str(o),color) 
-    
+        for elemento in raiz.iter('listaCiudades'):
+            for subelemento in elemento.iter('ciudad'):
+                #ciudades
+                for subsubelemento in subelemento.iter('nombre'):
+                    nombre = subsubelemento.text
+                    ciudades.insertarCiudad(subsubelemento.attrib['filas'], subsubelemento.attrib['columnas'], nombre)
+                #Fila
+                for subsubelemento1 in subelemento.iter('fila'):
+                    elem = ciudades.getCiudad(nombre)
+                    elem.lista_fila.insertarFila(subsubelemento1.attrib['numero'],subsubelemento1.text)
+                #Unidad militar
+                for subsubelemento2 in subelemento.iter('nombre'):
+                    nombre = subsubelemento.text
+                    ciudades.insertarCiudad(subsubelemento.attrib['filas'], subsubelemento.attrib['columnas'], nombre)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
