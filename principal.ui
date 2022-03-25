@@ -66,7 +66,20 @@ color: rgb(255, 255, 255);
 background-color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
-     <string>Graficar Ciudad</string>
+     <string>Misiones</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>80</y>
+      <width>391</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
    </widget>
   </widget>

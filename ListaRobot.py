@@ -24,9 +24,10 @@ class ListaRobot():
             aux = aux.siguiente3
         return None
 
-    def imprimirRobot(self):
+    def imprimirRobot(self,plainTextEdit):
         tmp = self.inicio3
         print("Imprimiendo Robots")
         while(tmp!=None):
+            plainTextEdit.setPlainText(str(tmp.getNombre())+" --- "+tmp.getTipo()+" --- "+tmp.getCapacidad())
             print(str(tmp.getNombre())+" --- "+tmp.getTipo()+" --- "+tmp.getCapacidad())
             tmp = tmp.siguiente3

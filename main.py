@@ -17,7 +17,7 @@ class Ventana(QMainWindow):
     ciudades = ListaCiudades()
     global robot
     robot = ListaRobot()
-    global elem
+        
     def __init__(self):
         super().__init__()
         loadUi("principal.ui", self)
@@ -72,10 +72,14 @@ class Ventana(QMainWindow):
                         robot.insertarRobot(subsubele.attrib['tipo'], capacidad,subsubele.text)
                     else:
                         robot.insertarRobot(subsubele.attrib['tipo'], subsubele.attrib['capacidad'],subsubele.text)
-        ciudades.imprimirCiuda()
+        
+        ciu=ciudades.imprimirCiuda()
+        #self.plainTextEdit.setPlainText(ciu)
         elem.lista_fila.imprimirFila()
         elem.lista_unimilitar.imprimirUni()
-        robot.imprimirRobot()
+        ro=robot.imprimirRobot()
+        
+
 
 
 if __name__ == '__main__':
