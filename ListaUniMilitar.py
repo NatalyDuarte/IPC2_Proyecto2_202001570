@@ -15,3 +15,10 @@ class ListaUniMilitar():
             while aux1.siguiente2 is not None:
                 aux1 = aux1.siguiente2
             aux1.siguiente2 = new1
+
+    def imprimirUni(self):
+        tmp = self.inicio2
+        print("Imprimiendo UniMilitar")
+        while(tmp!=None):
+            print(str(tmp.getNumero())+" --- "+tmp.getFila()+" --- "+tmp.getColumna())
+            tmp = tmp.siguiente2

@@ -15,3 +15,10 @@ class ListaFila():
             while aux1.siguiente1 is not None:
                 aux1 = aux1.siguiente1
             aux1.siguiente1 = new1
+
+    def imprimirFila(self):
+        tmp = self.inicio1
+        print("Imprimiendo Fila")
+        while(tmp!=None):
+            print(str(tmp.getNumero())+" --- "+tmp.getSecuencia())
+            tmp = tmp.siguiente1

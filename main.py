@@ -10,8 +10,14 @@ from xml.dom.minidom import ElementInfo
 import xml.etree.ElementTree as ET
 from ListaCiudades import ListaCiudades
 from ListaUniMilitar import ListaUniMilitar
+from ListaRobot import ListaRobot
 
 class Ventana(QMainWindow):
+    global ciudades
+    ciudades = ListaCiudades()
+    global robot
+    robot = ListaRobot()
+    global elem
     def __init__(self):
         super().__init__()
         loadUi("principal.ui", self)
@@ -20,9 +26,13 @@ class Ventana(QMainWindow):
     def lectura(self):
         global rutarecibida
         archi=filedialog.askopenfilename(filetypes=[("Archivos XML", ".xml .XML")])
-        rutarecibida=self.Lectura(archi)
+        if archi!="":
+            self.Lectura(archi)
+        else:
+            messagebox.showwarning("Alert","No se pudo abrir el archivo")
+                   
 
-    def Lectura(archivo):
+    def Lectura(self,archivo):
         tree = ET.parse(archivo)
         raiz = tree.getroot()
         global ciudades
@@ -35,11 +45,7 @@ class Ventana(QMainWindow):
         unidad = ""
         tipo = ""
         capacidad = ""
-        nom =""
-        global ciudades
-        ciudades = ListaCiudades()
-        global unimilitar
-        unimilitar = ListaUniMilitar()
+        nom =""       
         print("===== ¡ARCHIVO LEIDO CORRECTAMENTE! ====")
         #Lista Ciudades
         for elemento in raiz.iter('listaCiudades'):
@@ -54,14 +60,22 @@ class Ventana(QMainWindow):
                     elem.lista_fila.insertarFila(subsubelemento1.attrib['numero'],subsubelemento1.text)
                 #Unidad militar
                 for subsubelemento2 in subelemento.iter('unidadMilitar'):
-                    elem.lista_unimilitar.insertarUniMili(subsubelemento.attrib['fila'], subsubelemento.attrib['columna'],subsubelemento2.text)
+                    elem.lista_unimilitar.insertarUniMili(subsubelemento2.attrib['fila'], subsubelemento2.attrib['columna'],subsubelemento2.text)
         #Lista Robots
         for elemento1 in raiz.iter('robots'):
             for subele in elemento1.iter('robot'):
                 #robots
                 for subsubele in subele.iter('nombre'):
-                    ciudades.insertarCiudad(subsubele.attrib['tipo'], subsubele.attrib['capacidad'],subsubele.text)
-
+                    tipo=subsubele.attrib['tipo']
+                    capacidad =" "
+                    if tipo!="ChapinFighter":
+                        robot.insertarRobot(subsubele.attrib['tipo'], capacidad,subsubele.text)
+                    else:
+                        robot.insertarRobot(subsubele.attrib['tipo'], subsubele.attrib['capacidad'],subsubele.text)
+        ciudades.imprimirCiuda()
+        elem.lista_fila.imprimirFila()
+        elem.lista_unimilitar.imprimirUni()
+        robot.imprimirRobot()
 
 
 if __name__ == '__main__':

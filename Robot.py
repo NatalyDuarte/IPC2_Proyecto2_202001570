@@ -3,9 +3,7 @@ class Robot():
         self.tipo = tipo
         self.capacidad = capacidad
         self.nombre = nombre
-        #self.lista_fila = ListaFila()
-        #self.lista_unimilitar = ListaUniMilitar()
-        self.siguiente1=None
+        self.siguiente3=None
 
     def getTipo(self):
         return self.tipo
@@ -25,8 +23,8 @@ class Robot():
     def setNombre(self, nombre):
         self.nombre = nombre
 
-    def getSiguiente1(self):
-        return self.siguiente1
+    def getSiguiente3(self):
+        return self.siguiente3
 
-    def setSiguiente1(self,nodis1):
-        self.siguiente1=nodis1
+    def setSiguiente3(self,nodis3):
+        self.siguiente3=nodis3

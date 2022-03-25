@@ -23,3 +23,10 @@ class ListaCiudades():
                 return aux
             aux = aux.siguiente
         return None
+
+    def imprimirCiuda(self):
+        tmp = self.inicio
+        print("Imprimiendo ciudades")
+        while(tmp!=None):
+            print(str(tmp.getNombre())+" --- "+tmp.getFila()+" --- "+tmp.getColumna())
+            tmp = tmp.siguiente

@@ -1,18 +1,29 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuracion>
     <listaCiudades>
         <ciudad>
-            <nombre filas="4" columnas="4">Probando1</nombre>
-            <fila numero="1">"****"</fila>
-            <fila numero="2">"* * "</fila>
-            <fila numero="3">"*E*C"</fila>
-            <fila numero="4">"***R"</fila>
-            <unidadMilitar fila="2" columna="1">4<unidadMilitar/>
-        </ciudad>
+            <nombre filas="15" columnas="10">Small</nombre>
+            <fila numero="1">"* R*****E*"</fila>
+            <fila numero="2">"* ****** *"</fila>
+            <fila numero="3">"*    C** *"</fila>
+            <fila numero="4">"** ***** *"</fila>
+            <fila numero="5">"*R ***** *"</fila>
+            <fila numero="6">"** **    *"</fila>
+            <fila numero="7">"**    ** *"</fila>
+            <fila numero="8">"** ***** *"</fila>
+            <fila numero="9">"E        *"</fila>
+            <fila numero="10">"** *******"</fila>
+            <fila numero="11">"** *****R*"</fila>
+            <fila numero="12">"**    ** *"</fila>
+            <fila numero="13">"**C**    *"</fila>
+            <fila numero="14">"***** ****"</fila>
+            <fila numero="15">"*****E****"</fila>
+            <unidadMilitar fila="3" columna="3">115</unidadMilitar> 
+        </ciudad>        
     </listaCiudades>
     <robots>
         <robot>
-            <nombre tipo="ChapinFighter" capacidad="4">SISI</nombre>
+            <nombre tipo="ChapinFighter" capacidad="15">Probandootro1</nombre>
         </robot>
     </robots>
 </configuracion>
