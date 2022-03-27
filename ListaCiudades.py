@@ -27,6 +27,9 @@ class ListaCiudades():
     def imprimirCiuda(self):
         tmp = self.inicio
         print("Imprimiendo ciudades")
+        cadena=" "
         while(tmp!=None):
+            cadena=cadena+ "\n"+ str(tmp.getNombre())+" --- "+tmp.getFila()+" --- "+tmp.getColumna()
             print(str(tmp.getNombre())+" --- "+tmp.getFila()+" --- "+tmp.getColumna())
             tmp = tmp.siguiente
+        return cadena

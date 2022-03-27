@@ -1,8 +1,8 @@
 class Cabecera():
     def __init__(self, correlativo):
         self.correlativo = correlativo
-        self.siguiente = None
-        self.anterior = None
+        self.siguiente4 = None
+        self.anterior4 = None
         self.acceso = None
 
     def getCorrelativo(self):

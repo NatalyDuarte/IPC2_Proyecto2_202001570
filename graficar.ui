@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>818</width>
-    <height>541</height>
+    <width>741</width>
+    <height>325</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>10</y>
+      <y>30</y>
       <width>361</width>
       <height>41</height>
      </rect>
@@ -33,97 +33,11 @@
      <string>Chapín Warriors, S. A.</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>100</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Poor Richard&quot;;
-color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>Cargar archivo</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>300</y>
-      <width>251</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Poor Richard&quot;;
-font: 14pt &quot;Poor Richard&quot;;
-color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>Mostrar Graficamente una Ciudad</string>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>80</y>
-      <width>391</width>
-      <height>391</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>160</y>
-      <width>251</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Poor Richard&quot;;
-color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>Mostrar Ciudades Cargadas </string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>230</y>
-      <width>251</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Poor Richard&quot;;
-color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>Mostrar Robots Cargadas </string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>0</y>
+      <x>590</x>
+      <y>30</y>
       <width>141</width>
       <height>41</height>
      </rect>
@@ -134,7 +48,54 @@ color: rgb(255, 255, 255);
 background-color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
-     <string>Salir</string>
+     <string>Regresar</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>130</y>
+      <width>261</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16pt &quot;Arial Narrow&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Ingrese el nombre de la Ciudad:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>160</y>
+      <width>311</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>230</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16pt &quot;Poor Richard&quot;;
+color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Graficar</string>
     </property>
    </widget>
   </widget>
@@ -143,7 +104,7 @@ background-color: rgb(0, 0, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>818</width>
+     <width>741</width>
      <height>21</height>
     </rect>
    </property>

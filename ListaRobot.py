@@ -24,10 +24,12 @@ class ListaRobot():
             aux = aux.siguiente3
         return None
 
-    def imprimirRobot(self,plainTextEdit):
+    def imprimirRobot(self):
         tmp = self.inicio3
         print("Imprimiendo Robots")
+        cadena=" "
         while(tmp!=None):
-            plainTextEdit.setPlainText(str(tmp.getNombre())+" --- "+tmp.getTipo()+" --- "+tmp.getCapacidad())
+            cadena=cadena+ "\n"+str(tmp.getNombre())+" --- "+tmp.getTipo()+" --- "+tmp.getCapacidad()
             print(str(tmp.getNombre())+" --- "+tmp.getTipo()+" --- "+tmp.getCapacidad())
             tmp = tmp.siguiente3
+        return cadena
