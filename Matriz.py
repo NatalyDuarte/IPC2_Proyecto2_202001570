@@ -15,11 +15,12 @@ class Matriz():
         if verfila == None: 
             verfila = Cabecera(coordefila)
             self.filas.insertarCabe(verfila)
-            self.filas.imprimirCabecera()
-        elif vercolumna== None: 
+            #self.filas.imprimirCabecera()
+        if vercolumna== None: 
             vercolumna = Cabecera(coordecolumna)
             self.columnas.insertarCabe(vercolumna)
-        elif verfila.getAcceso() == None: 
+            #self.columnas.imprimirCabecera()
+        if verfila.getAcceso() == None: 
             verfila.setAcceso(new)
         else: 
             if new.coordecolumna < verfila.getAcceso().coordecolumna:     
@@ -44,7 +45,6 @@ class Matriz():
                             break
                         else:
                             tmp = tmp.getDerecha() 
-        
         if vercolumna.getAcceso() == None:  
             vercolumna.setAcceso(new)
         else: 
@@ -71,3 +71,23 @@ class Matriz():
                         else:
                             tmp2 = tmp2.getAbajo()
     
+    def ImprimirFila(self, fila):
+        inicio= self.filas.getCabecera(fila)
+        if inicio == None:
+            print('No existe')
+            return None
+        tmp = inicio.getAcceso()
+        while tmp != None:
+            print(tmp.caracter)
+            tmp = tmp.getDerecha()
+
+    
+    def ImprimirColumna(self, columna):
+        inicio = self.columnas.getCabecera(columna)
+        if inicio == None:
+            print('No existe')
+            return None
+        tmp= inicio.getAcceso()
+        while tmp != None:
+            print(tmp.caracter)
+            tmp = tmp.getAbajo()

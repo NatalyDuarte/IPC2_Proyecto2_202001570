@@ -58,15 +58,29 @@ class Ventana(QMainWindow):
                 #ciudades
                 for subsubelemento in subelemento.iter('nombre'):
                     nombre = subsubelemento.text
-                    ciudades.insertarCiudad(subsubelemento.attrib['filas'], subsubelemento.attrib['columnas'], nombre)
+                    filas = subsubelemento.attrib['filas']
+                    colum = subsubelemento.attrib['columnas']
+                    ciudades.insertarCiudad(filas, colum, nombre)
                 #Fila
                 for subsubelemento1 in subelemento.iter('fila'):
                     elem = ciudades.getCiudad(nombre)
-                    elem.lista_fila.insertarFila(subsubelemento1.attrib['numero'],subsubelemento1.text)
-                    contador=0 
-                    while contador<=len(subsubelemento1.text):
-                        matriz.InsertarMatriz(subsubelemento1.attrib['numero'],str(contador),"*")
-                        contador +=1
+                    cade= subsubelemento1.text
+                    cade= cade.replace("\"","")
+                    elem.lista_fila.insertarFila(subsubelemento1.attrib['numero'],cade)
+                    longi = list(cade)
+                    #print("longi")
+                    #print(longi)
+                    divi=[longi[j:j + int(colum)] for j in range(0,len(longi),int(colum))]
+                    #print("divi")
+                    #print(divi)
+                    contador=1 
+                    while contador<=len(cade):
+                        for o in range(len(cade)):
+                            elem.matriz.InsertarMatriz(int(subsubelemento1.attrib['numero']),int(contador),cade[o])
+                            elem.matriz.ImprimirFila(int(subsubelemento1.attrib['numero']))
+                            contador +=1
+                            
+                
                 #Unidad militar
                 for subsubelemento2 in subelemento.iter('unidadMilitar'):
                     elem.lista_unimilitar.insertarUniMili(subsubelemento2.attrib['fila'], subsubelemento2.attrib['columna'],subsubelemento2.text)

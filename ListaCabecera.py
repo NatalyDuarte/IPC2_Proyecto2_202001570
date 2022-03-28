@@ -16,9 +16,9 @@ class ListaCabecera():
                 nuevo.siguiente4 = self.primero4
                 self.primero4.anterior4 = nuevo
                 self.primero4 = nuevo
-            elif nuevo.correlativo > self.ultimo.correlativo:
+            elif nuevo.correlativo > self.ultimo4.correlativo:
                 self.ultimo4.siguiente4 = nuevo
-                nuevo.anterior4 = self.ultimo
+                nuevo.anterior4 = self.ultimo4
                 self.ultimo4 = nuevo
             else:
                 tmp = self.primero4 
@@ -44,7 +44,6 @@ class ListaCabecera():
         tmp = self.primero4
         while tmp != None:
             if id == tmp.correlativo:
-                print(tmp)
                 return tmp
             tmp = tmp.siguiente4
         return None
