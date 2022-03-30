@@ -74,8 +74,12 @@ class Ventana(QMainWindow):
                     contador=1 
                     while contador<=len(cade):
                         for o in range(len(cade)):
-                            elem.matriz.InsertarMatriz(int(subsubelemento1.attrib['numero']),int(contador),str(cade[o])) 
-                            elem.lista_celda.insertarCelda(int(subsubelemento1.attrib['numero']),int(contador),str(cade[o]))                            
+                            if(str(subsubelemento2.attrib['fila'])==str(subsubelemento1.attrib['numero']) and str(subsubelemento2.attrib['columna'])==str(contador)):
+                                elem.matriz.InsertarMatriz(int(subsubelemento1.attrib['numero']),int(contador),subsubelemento2.text) 
+                                elem.lista_celda.insertarCelda(int(subsubelemento1.attrib['numero']),int(contador),subsubelemento2.text)                            
+                            else:
+                                elem.matriz.InsertarMatriz( int ( subsubelemento1 . attrib [ 'numero' ]), int ( contador ), str ( cade [ o ]))
+                                elem.lista_celda.insertarCelda( int( subsubelemento1 . attrib [ 'numero' ]), int ( contador ), str ( cade [ o ]))    
                             contador +=1
                 elem.lista_celda.imprimirDobleEnlaPa()
                 
@@ -144,22 +148,22 @@ class Ventana(QMainWindow):
                 grafico.write('name{}[label="{}" fillcolor="blue" shape="box"];\n'.format(count,  tmp.caracter))
             elif(tmp.caracter=="R"):
                 grafico.write('name{}[label="{}" fillcolor="gray" shape="box"];\n'.format(count,  tmp.caracter))
-            elif(tmp.caracter=="U"):
-                grafico.write('name{}[label="{}" fillcolor="red" shape="box"];\n'.format(count,  tmp.caracter))
-            else:
+            elif(tmp.caracter==" "):
                 grafico.write('name{}[label="{}" fillcolor="white" shape="box"];\n'.format(count,  tmp.caracter))
+            else:
+                grafico.write('name{}[label="{}" fillcolor="red" shape="box"];\n'.format(count,  tmp.caracter))
             count += 1
             tmp = tmp.siguien
         
         length = int(patron.columna)
         count3 = 0
         for i in range(length):
-            grafico.write('nodoP -- name{};\n'.format(count3))
+            grafico.write('nodoP -- name{}[style ="invis" rank="min"] ;\n'.format(count3))
             count3 += 1
             sum = int(patron.columna)
 
         for i in range((sum*int(patron.fila))-length):
-            grafico.write('name{} -- name{};\n'.format(i, (i + sum)))
+            grafico.write('name{}   -- name{} [style ="invis" rank="min"];\n'.format(i, (i + sum)))
         grafico.write('}\n}\n')
         grafico.close()
         os.system('dot.exe -Tpng graficapatron.dot -o '+patron.nombre+'_reporte.png')
