@@ -1,5 +1,6 @@
 from Cabecera import Cabecera
 class ListaCabecera():
+    
     def __init__(self, tipo):
         self.primero4 = None
         self.ultimo4 = None
@@ -47,3 +48,49 @@ class ListaCabecera():
                 return tmp
             tmp = tmp.siguiente4
         return None
+'''
+    def __init__(self):
+        self.raiz = self.ultimo = None
+
+    def insertar(self, valor):
+        nuevo = Cabecera(valor)
+        if self.raiz == None:
+            self.raiz = self.ultimo = nuevo
+        else:
+            self.ordenar(nuevo)
+    
+    def ordenar(self, nodo):
+        aux = self.raiz
+        while(aux!=None):
+            if aux.valor < nodo.valor:
+                aux = aux.siguiente
+            else:
+                if aux == self.raiz:
+                    nodo.siguiente = aux
+                    aux.anterior = nodo
+                    self.raiz = nodo
+                    return
+                else:
+                    nodo.anterior = aux.anterior
+                    aux.anterior.siguiente = nodo
+                    nodo.siguiente = aux
+                    aux.anterior = nodo
+                    return
+            self.ultimo.siguiente = nodo
+            nodo.anterior = self.ultimo
+            self.ultimo = nodo
+    
+    def search(self, valor):
+        temp = self.raiz
+        while(temp != None):
+            if temp.valor == valor:
+                return temp
+            temp = temp.siguiente
+        return None
+
+    def print(self):
+        temp = self.raiz
+        while(temp!=None):
+            print("Cabecera:", temp.valor)
+            temp = temp.siguiente
+    '''

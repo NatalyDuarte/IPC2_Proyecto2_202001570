@@ -1,8 +1,11 @@
 from Cabecera import Cabecera
 from ListaCabecera import ListaCabecera
 from Celda import Celda
+import os
+import webbrowser
 
 class Matriz():
+    
     def __init__(self):
         self.capa = 0
         self.filas = ListaCabecera('fila')
@@ -91,3 +94,5 @@ class Matriz():
         while tmp != None:
             print(tmp.caracter)
             tmp = tmp.getAbajo()
+
+    

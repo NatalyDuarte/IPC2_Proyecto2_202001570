@@ -3,11 +3,31 @@ class Celda():
         self.caracter = caracter
         self.coordefila = coordefila 
         self.coordecolumna = coordecolumna
+        self.siguien= None
+        self.anteri= None
         self.arriba = None
         self.abajo = None
         self.derecha = None
         self.izquierda = None 
 
+    def setFila(self, coordefila):
+        self.coordefila = coordefila
+    
+    def getFila(self):
+        return self.coordefila
+
+    def setColum(self, coordecolumna):
+        self.coordecolumna = coordecolumna
+    
+    def getColum(self):
+        return self.coordecolumna
+
+    def setCara(self, caracter):
+        self.caracter = caracter
+    
+    def getCaracter(self):
+        return self.caracter
+       
     def setArriba(self, arriba):
         self.arriba = arriba
     
@@ -31,3 +51,4 @@ class Celda():
 
     def getIzquierda(self):
         return self.izquierda
+    

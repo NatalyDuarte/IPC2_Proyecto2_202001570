@@ -1,6 +1,7 @@
 from ListaFila import ListaFila
 from ListaUniMilitar import ListaUniMilitar
 from Matriz import Matriz
+from ListaCelda import ListaCelda
 class Ciudad():
     def __init__(self,fila,columna, nombre):
         self.fila = fila
@@ -9,10 +10,14 @@ class Ciudad():
         self.lista_fila = ListaFila()
         self.lista_unimilitar = ListaUniMilitar()
         self.matriz = Matriz()
+        self.lista_celda = ListaCelda()
         self.siguiente=None
     
     def getListFila(self):
         return self.lista_fila
+    
+    def getListCelda(self):
+        return self.lista_celda
 
     def getListUniMili(self):
         return self.lista_unimilitar
