@@ -5,14 +5,15 @@ import sys
 from PyQt5.QtGui import QPixmap
 from tkinter import messagebox
 from tkinter import filedialog
-import os
-import webbrowser
 from xml.dom.minidom import ElementInfo
 import xml.etree.ElementTree as ET
 from ListaCiudades import ListaCiudades
 from ListaUniMilitar import ListaUniMilitar
 from ListaRobot import ListaRobot
 from Matriz import Matriz
+from graficar import Ui_MainWindow
+import os
+import webbrowser
 
 class Ventana(QMainWindow):
     global ciudades
@@ -25,9 +26,29 @@ class Ventana(QMainWindow):
         super().__init__()
         loadUi("principal.ui", self)
         self.pushButton.clicked.connect(self.lectura)
+        self.pushButton_2.clicked.connect(self.abrir1)
         self.pushButton_3.clicked.connect(self.impri1)
         self.pushButton_4.clicked.connect(self.impri2)
         self.pushButton_5.clicked.connect(self.salir)
+        self.label_2.setVisible(False)
+        self.lineEdit.setVisible(False)
+        self.pushButton_6.setVisible(False)
+    
+    def abrir1(self):
+        self.label_2.setVisible(True)
+        self.lineEdit.setVisible(True)
+        self.pushButton_6.setVisible(True)
+        self.pushButton_6.clicked.connect(self.grafi)
+        
+
+    def grafi(self):
+        nombre=self.lineEdit.text()
+        print(nombre)
+        elem = ciudades.getCiudad(nombre)
+        self.Grafica4(elem)
+        self.label_2.setVisible(False)
+        self.lineEdit.setVisible(False)
+        self.pushButton_6.setVisible(False)
 
     def lectura(self):
         global rutarecibida
@@ -63,9 +84,6 @@ class Ventana(QMainWindow):
                     colum = subsubelemento.attrib['columnas']
                     ciudades.insertarCiudad(filas, colum, nombre)
                 elem = ciudades.getCiudad(nombre)
-                #Unidad militar
-                for subsubelemento2 in subelemento.iter('unidadMilitar'):
-                    elem.lista_unimilitar.insertarUniMili(subsubelemento2.attrib['fila'], subsubelemento2.attrib['columna'],subsubelemento2.text)
                 #Fila
                 for subsubelemento1 in subelemento.iter('fila'):
                     cade= subsubelemento1.text
@@ -74,16 +92,16 @@ class Ventana(QMainWindow):
                     contador=1 
                     while contador<=len(cade):
                         for o in range(len(cade)):
-                            if(str(subsubelemento2.attrib['fila'])==str(subsubelemento1.attrib['numero']) and str(subsubelemento2.attrib['columna'])==str(contador)):
-                                elem.matriz.InsertarMatriz(int(subsubelemento1.attrib['numero']),int(contador),subsubelemento2.text) 
-                                elem.lista_celda.insertarCelda(int(subsubelemento1.attrib['numero']),int(contador),subsubelemento2.text)                            
-                            else:
-                                elem.matriz.InsertarMatriz( int ( subsubelemento1 . attrib [ 'numero' ]), int ( contador ), str ( cade [ o ]))
-                                elem.lista_celda.insertarCelda( int( subsubelemento1 . attrib [ 'numero' ]), int ( contador ), str ( cade [ o ]))    
+                            elem.matriz.InsertarMatriz( int ( subsubelemento1 . attrib [ 'numero' ]), int ( contador ), str ( cade [ o ]))
+                            elem.lista_celda.insertarCelda( int( subsubelemento1 . attrib [ 'numero' ]), int ( contador ), str ( cade [ o ]))    
                             contador +=1
-                elem.lista_celda.imprimirDobleEnlaPa()
                 
-                    
+                #Unidad militar
+                for subsubelemento2 in subelemento.iter('unidadMilitar'):
+                    elem.lista_unimilitar.insertarUniMili(subsubelemento2.attrib['fila'], subsubelemento2.attrib['columna'],subsubelemento2.text)
+                    elem.matriz.Sustitu(int(subsubelemento2.attrib['fila']), int(subsubelemento2.attrib['columna']),str(subsubelemento2.text))
+                    elem.lista_celda.Sustitu(int(subsubelemento2.attrib['fila']), int(subsubelemento2.attrib['columna']),str(subsubelemento2.text))
+                elem.lista_celda.imprimirDobleEnlaPa()
         #Lista Robots
         for elemento1 in raiz.iter('robots'):
             for subele in elemento1.iter('robot'):
@@ -95,8 +113,7 @@ class Ventana(QMainWindow):
                         robot.insertarRobot(subsubele.attrib['tipo'], capacidad,subsubele.text)
                     else:
                         robot.insertarRobot(subsubele.attrib['tipo'], subsubele.attrib['capacidad'],subsubele.text)
-        #self.VerificarUni(elem)
-        self.Grafica4(elem)
+        
         
     def VerificarUni(self, elem):
         cont=0
@@ -113,25 +130,13 @@ class Ventana(QMainWindow):
                 tmp1 = tmp1.siguiente2 
             cont +=1  
             tmp = tmp.siguien
-            
-            
-
-    def impri1(self):
-        ciu=ciudades.imprimirCiuda()
-        self.plainTextEdit.setPlainText(ciu)
-
-    def impri2(self):
-        ro=robot.imprimirRobot()
-        self.plainTextEdit.setPlainText(ro)
-
-    def salir(self):
-        sys.exit(1)
 
     def Grafica4(self,patron):
         count = 0
         grafico = open("graficapatron.dot", 'w+')
-        grafico.write('graph G {\n')
-        grafico.write('node[shape=box fillcolor="pink:yellow" style =filled]\n')
+        grafico.write('graph G{\n')
+        grafico.write('graph[nodesep="0" ranksep="0"]')
+        grafico.write('node[shape=box fillcolor="pink:yellow"  style =filled]\n')
         grafico.write(''' subgraph cluster_p{
             label= "REPORTE CIUDAD"
             bgcolor = "pink"''')
@@ -158,17 +163,31 @@ class Ventana(QMainWindow):
         length = int(patron.columna)
         count3 = 0
         for i in range(length):
-            grafico.write('nodoP -- name{}[style ="invis" rank="min"] ;\n'.format(count3))
+            grafico.write('nodoP -- name{}[style ="invis" nodesep="0" ranksep="0"] ;\n'.format(count3))
             count3 += 1
             sum = int(patron.columna)
 
         for i in range((sum*int(patron.fila))-length):
-            grafico.write('name{}   -- name{} [style ="invis" rank="min"];\n'.format(i, (i + sum)))
+            grafico.write('name{}   -- name{} [style ="invis" nodesep="0" ranksep="0"];\n'.format(i, (i + sum)))
         grafico.write('}\n}\n')
         grafico.close()
         os.system('dot.exe -Tpng graficapatron.dot -o '+patron.nombre+'_reporte.png')
         os.system('dot.exe -Tpdf graficapatron.dot -o '+patron.nombre+'_reporte.pdf')
-        os.startfile(patron.nombre+'_reporte.pdf')
+        os.startfile(patron.nombre+'_reporte.pdf')            
+            
+    
+    def impri1(self):
+        ciu=ciudades.imprimirCiuda()
+        self.plainTextEdit.setPlainText(ciu)
+
+    def impri2(self):
+        ro=robot.imprimirRobot()
+        self.plainTextEdit.setPlainText(ro)
+
+    def salir(self):
+        sys.exit(1)
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

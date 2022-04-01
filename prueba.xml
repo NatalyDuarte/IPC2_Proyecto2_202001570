@@ -2,7 +2,7 @@
 <configuracion>
     <listaCiudades>
         <ciudad>
-            <nombre filas="15" columnas="10">Small</nombre>
+            <nombre filas="15" columnas="10">CentralCity</nombre>
             <fila numero="1">"* R*****E*"</fila>
             <fila numero="2">"* ****** *"</fila>
             <fila numero="3">"*    C** *"</fila>
@@ -18,12 +18,14 @@
             <fila numero="13">"**C**    *"</fila>
             <fila numero="14">"***** ****"</fila>
             <fila numero="15">"*****E****"</fila>
+            <unidadMilitar fila="1" columna="2">111</unidadMilitar> 
             <unidadMilitar fila="3" columna="3">115</unidadMilitar> 
         </ciudad>        
     </listaCiudades>
     <robots>
         <robot>
             <nombre tipo="ChapinFighter" capacidad="15">Probandootro1</nombre>
+            <nombre tipo="ChapinFighter" capacidad="120">Peleador1</nombre>
         </robot>
     </robots>
 </configuracion>

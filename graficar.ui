@@ -33,24 +33,6 @@
      <string>Chapín Warriors, S. A.</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>30</y>
-      <width>141</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Poor Richard&quot;;
-color: rgb(255, 255, 255);
-background-color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>Regresar</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>

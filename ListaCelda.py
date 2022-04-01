@@ -32,3 +32,16 @@ class ListaCelda():
         while(tmp!=None):
             print(str(tmp.getFila())+" --- "+str(tmp.getColum())+" --- "+tmp.getCaracter())
             tmp = tmp.siguien
+            
+    def Sustitu(self, fila, columna, cade):
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.coordefila == fila and tmp.coordecolumna == columna:
+                    print("Llego")
+                    tmp.caracter = cade
+                tmp = tmp.siguien
+            return None
+        except:
+            print('Coordenada no encontrada')
+            return None

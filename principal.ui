@@ -73,10 +73,10 @@ background-color: rgb(0, 0, 0);</string>
    <widget class="QPlainTextEdit" name="plainTextEdit">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>80</y>
-      <width>391</width>
-      <height>391</height>
+      <x>360</x>
+      <y>70</y>
+      <width>401</width>
+      <height>181</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -135,6 +135,53 @@ background-color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Salir</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>360</y>
+      <width>311</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>310</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16pt &quot;Arial Narrow&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Ingrese el nombre de la Ciudad:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>420</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 16pt &quot;Poor Richard&quot;;
+color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Graficar</string>
     </property>
    </widget>
   </widget>

@@ -95,4 +95,15 @@ class Matriz():
             print(tmp.caracter)
             tmp = tmp.getAbajo()
 
-    
+    def Sustitu(self, fila, columna, cade):
+        try:
+            tmp = self.filas.getCabecera(fila).getAcceso()
+            while tmp != None:
+                if tmp.coordefila == fila and tmp.coordecolumna == columna:
+                    #print("Llego")
+                    tmp.caracter = cade
+                tmp = tmp.getDerecha()
+            return None
+        except:
+            #print('Coordenada no encontrada')
+            return None
