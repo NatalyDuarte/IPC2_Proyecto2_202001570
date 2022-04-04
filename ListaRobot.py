@@ -68,3 +68,13 @@ class ListaRobot():
                 self.inicio3=actual.siguiente3
             else:
                 anterior.setSiguiente3(actual.siguiente3)
+
+    def RobotRes(self):
+        aux = self.inicio3
+        while aux is not None:
+            if aux.tipo=="ChapinRescue":
+                return aux
+            aux = aux.siguiente3
+        return None
+
+        
