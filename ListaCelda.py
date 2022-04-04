@@ -18,15 +18,6 @@ class ListaCelda():
             tmp.siguien = nuevo
             nuevo.anteri = tmp
 
-    '''
-    def getCelda(self):
-        suma = 0
-        tmp = self.inicio2
-        while tmp is not None:
-            suma  = suma+int(tmp.color)
-            tmp = tmp.siguiente2
-        return suma
-    '''
     def imprimirDobleEnlaPa(self):
         tmp = self.inicio2
         while(tmp!=None):
@@ -42,6 +33,6 @@ class ListaCelda():
                     tmp.caracter = cade
                 tmp = tmp.siguien
             return None
-        except:
+        except: 
             print('Coordenada no encontrada')
             return None

@@ -30,10 +30,37 @@ class Ventana(QMainWindow):
         self.pushButton_3.clicked.connect(self.impri1)
         self.pushButton_4.clicked.connect(self.impri2)
         self.pushButton_5.clicked.connect(self.salir)
+        self.pushButton_7.clicked.connect(self.misi)
         self.label_2.setVisible(False)
+        self.label_3.setVisible(False)
+        self.label_4.setVisible(False)
+        self.label_5.setVisible(False)
+        self.label_6.setVisible(False)
         self.lineEdit.setVisible(False)
+        self.lineEdit_2.setVisible(False)
+        self.lineEdit_3.setVisible(False)
+        self.lineEdit_4.setVisible(False)
+        self.lineEdit_5.setVisible(False)
         self.pushButton_6.setVisible(False)
-    
+        self.pushButton_9.setVisible(False)
+        self.pushButton_10.setVisible(False)
+        self.pushButton_11.setVisible(False)
+
+    def misi(self):
+        el= robot.RobotRes()
+        if el!= None:
+            self.label_2.setVisible(True)
+            self.lineEdit.setVisible(True)
+            self.pushButton_11.setVisible(True)
+            self.pushButton_11.clicked.connect(self.buscando)
+        else:
+            messagebox.showwarning("Alert","No hay robots ChapinRescue por lo tanto no se puede hacer esta misión")
+        
+    def buscando(self):
+        nombre=self.lineEdit.text()
+        
+        
+
     def abrir1(self):
         self.label_2.setVisible(True)
         self.lineEdit.setVisible(True)
