@@ -77,4 +77,45 @@ class ListaRobot():
             aux = aux.siguiente3
         return None
 
+    def RobotResNom(self):
+        aux = self.inicio3
+        while aux is not None:
+            if aux.tipo=="ChapinRescue":
+                return aux.nombre
+            aux = aux.siguiente3
+        return None
+
+    def RobotResNom1(self):
+        aux = self.inicio3
+        while aux is not None:
+            if aux.tipo=="ChapinFighter":
+                return aux.nombre
+            aux = aux.siguiente3
+        return None
+
+    def RobotResCont(self):
+        contador=0
+        aux = self.inicio3
+        while aux is not None:
+            if aux.tipo=="ChapinRescue":
+                contador+=1
+            aux = aux.siguiente3
+        return contador
+
+    def RobotEx(self):
+        aux = self.inicio3
+        while aux is not None:
+            if aux.tipo=="ChapinFighter":
+                return aux
+            aux = aux.siguiente3
+        return None
+
+    def RobotExCont(self):
+        contador=0
+        aux = self.inicio3
+        while aux is not None:
+            if aux.tipo=="ChapinFighter":
+                contador+=1
+            aux = aux.siguiente3
+        return contador
         

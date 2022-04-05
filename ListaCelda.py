@@ -36,3 +36,97 @@ class ListaCelda():
         except: 
             print('Coordenada no encontrada')
             return None
+
+    def Bus(self,cade):
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.caracter == cade:
+                    return tmp
+                tmp = tmp.siguien
+            return None
+        except: 
+            print('Coordenada no encontrada')
+            return None
+
+    def BusUni(self, cade):
+        contador=0
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.caracter == cade:
+                    contador+=1
+                tmp = tmp.siguien
+            return contador
+        except: 
+            print('Coordenada no encontrada')
+            return None
+        
+    def BusPE(self):
+        contador=0
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.caracter == "E" :
+                    return tmp.coordefila,tmp.coordecolumna
+                tmp = tmp.siguien
+            return None
+        except: 
+            print('Coordenada no encontrada')
+            return None
+
+    def BusCF(self):
+        contador=0
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.caracter == "C" :
+                    return tmp.coordefila
+                tmp = tmp.siguien
+            return None
+        except: 
+            print('Coordenada no encontrada')
+            return None
+
+    def BusCC(self):
+        contador=0
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.caracter == "C" :
+                    return tmp.coordecolumna
+                tmp = tmp.siguien
+            return None
+        except: 
+            print('Coordenada no encontrada')
+            return None
+
+    def BusCF1(self):
+        contador=0
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.caracter == "R" :
+                    return tmp.coordefila
+                tmp = tmp.siguien
+            return None
+        except: 
+            print('Coordenada no encontrada')
+            return None
+
+    def BusCC1(self):
+        contador=0
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.caracter == "R" :
+                    return tmp.coordecolumna
+                tmp = tmp.siguien
+            return None
+        except: 
+            print('Coordenada no encontrada')
+            return None
+
+    
+        
+    

@@ -1,15 +1,18 @@
 graph G{
 graph[nodesep="0" ranksep="0"]node[shape=box fillcolor="pink:yellow"  style =filled]
+
+
+
  subgraph cluster_p{
-            label= "REPORTE CIUDAD"
-            bgcolor = "pink"nodoP[label="CentralCity" shape="box"];
+            label= "REPORTE EXTRACCIÓN DE RECURSOS"
+            bgcolor = "pink"nodoP[label="Ciudad: CentralCity" shape="box"];
 name0[label="*" fillcolor="black" shape="box"];
 name1[label="*" fillcolor="black" shape="box"];
 name2[label="*" fillcolor="black" shape="box"];
 name3[label="*" fillcolor="black" shape="box"];
 name4[label=" " fillcolor="white" shape="box"];
 name5[label=" " fillcolor="white" shape="box"];
-name6[label="C" fillcolor="blue" shape="box"];
+name6[label=" " fillcolor="white" shape="box"];
 name7[label="*" fillcolor="black" shape="box"];
 name8[label="*" fillcolor="black" shape="box"];
 name9[label="*" fillcolor="black" shape="box"];
@@ -53,7 +56,7 @@ name46[label="*" fillcolor="black" shape="box"];
 name47[label=" " fillcolor="white" shape="box"];
 name48[label="*" fillcolor="black" shape="box"];
 name49[label="*" fillcolor="black" shape="box"];
-name50[label="R" fillcolor="gray" shape="box"];
+name50[label=" " fillcolor="white" shape="box"];
 name51[label=" " fillcolor="white" shape="box"];
 name52[label=" " fillcolor="white" shape="box"];
 name53[label=" " fillcolor="white" shape="box"];
@@ -72,7 +75,7 @@ name65[label="*" fillcolor="black" shape="box"];
 name66[label="*" fillcolor="black" shape="box"];
 name67[label=" " fillcolor="white" shape="box"];
 name68[label=" " fillcolor="white" shape="box"];
-name69[label="C" fillcolor="blue" shape="box"];
+name69[label="E" fillcolor="green" shape="box"];
 name70[label="*" fillcolor="black" shape="box"];
 name71[label="*" fillcolor="black" shape="box"];
 name72[label=" " fillcolor="white" shape="box"];
@@ -95,7 +98,7 @@ name88[label="*" fillcolor="black" shape="box"];
 name89[label="*" fillcolor="black" shape="box"];
 name90[label="*" fillcolor="black" shape="box"];
 name91[label="*" fillcolor="black" shape="box"];
-name92[label="E" fillcolor="green" shape="box"];
+name92[label="C" fillcolor="blue" shape="box"];
 name93[label="*" fillcolor="black" shape="box"];
 name94[label="*" fillcolor="black" shape="box"];
 name95[label="*" fillcolor="black" shape="box"];
@@ -203,5 +206,21 @@ name86   -- name96 [style ="invis" nodesep="0" ranksep="0"];
 name87   -- name97 [style ="invis" nodesep="0" ranksep="0"];
 name88   -- name98 [style ="invis" nodesep="0" ranksep="0"];
 name89   -- name99 [style ="invis" nodesep="0" ranksep="0"];
+nodo1[label="Tipo de misión: extraccion de recursos"];
+
+
+
+nodo2[label="Fila de recurso extraido: 3"];
+
+
+
+nodo3[label="Columna de recurso extraido: 10"];
+
+
+
+nodo4[label="Robot utilizado: Peleador2"];
+
+
+
 }
 }
