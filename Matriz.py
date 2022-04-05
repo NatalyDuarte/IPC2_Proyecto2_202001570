@@ -107,3 +107,25 @@ class Matriz():
         except:
             #print('Coordenada no encontrada')
             return None
+
+    def Rescate(self, PEF, PEC, PFF, PFC):
+        try:
+            tmp = self.filas.getCabecera(PEF).getAcceso()
+            while tmp != None:
+                if tmp.coordefila == PEF and tmp.coordecolumna == PEC:
+                    tmp.caracter = "I"
+                tmp1 = tmp.getDerecha()
+                tmp2= tmp.getIzquierda()
+                tmp3=tmp.getAbajo()
+                tmp4=tmp.getArriba()
+                if tmp1.caracter== " ":
+                    tmp.caracter = "A"
+                if tmp2.caracter== " ":
+                    tmp.caracter = "A"
+                if tmp3.caracter== " ":
+                    tmp.caracter = "A"
+                if tmp4.caracter== " ":
+                    tmp.caracter = "A"
+            return True
+        except:
+            return None

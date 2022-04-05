@@ -1,11 +1,8 @@
 graph G{
 graph[nodesep="0" ranksep="0"]node[shape=box fillcolor="pink:yellow"  style =filled]
-
-
-
  subgraph cluster_p{
-            label= "REPORTE EXTRACCIÓN DE RECURSOS"
-            bgcolor = "pink"nodoP[label="Ciudad: CentralCity" shape="box"];
+            label= "REPORTE CIUDAD"
+            bgcolor = "pink"nodoP[label="CentralCity" shape="box"];
 name0[label="*" fillcolor="black" shape="box"];
 name1[label="*" fillcolor="black" shape="box"];
 name2[label="*" fillcolor="black" shape="box"];
@@ -206,21 +203,5 @@ name86   -- name96 [style ="invis" nodesep="0" ranksep="0"];
 name87   -- name97 [style ="invis" nodesep="0" ranksep="0"];
 name88   -- name98 [style ="invis" nodesep="0" ranksep="0"];
 name89   -- name99 [style ="invis" nodesep="0" ranksep="0"];
-nodo1[label="Tipo de misión: extraccion de recursos"];
-
-
-
-nodo2[label="Fila de recurso extraido: 3"];
-
-
-
-nodo3[label="Columna de recurso extraido: 10"];
-
-
-
-nodo4[label="Robot utilizado: Peleador2"];
-
-
-
 }
 }

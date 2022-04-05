@@ -251,7 +251,7 @@ class Ventana(QMainWindow):
         grafico.write(''' subgraph cluster_p{
             label= "REPORTE CIUDAD"
             bgcolor = "pink"''')
-        grafico.write('nodo0[label="{}" shape="box"];\n'.format(patron.nombre))
+        grafico.write('nodoP[label="{}" shape="box"];\n'.format(patron.nombre))
 
         tmp = patron.lista_celda.inicio2
         tmp1 = patron.lista_unimilitar.inicio2 
@@ -299,11 +299,19 @@ class Ventana(QMainWindow):
             UCC=columna
         if robots!=" ":
             RC=robots
-        PE = ciudad.lista_celda.BusPE()
-        if PE!=None:
-            print(PE)
+        PEF = ciudad.lista_celda.BusPEF()
+        PEC = ciudad.lista_celda.BusPEC()
+        if PEF!=None:
+            pass
         else: 
             messagebox.showwarning("Alert","No se encontro el punto de entrada en esta ciudad por lo tanto no se puede hacer esta misión")
+        '''
+        ob=ciudad.matriz.Rescate(PEF,PEC,UCF,UCC)
+        if ob==True:
+            ciudad.matriz.ImprimirColumna(UCF)
+        else:
+            pass
+        '''
         count = 0
         grafico = open("graficapatron.dot", 'w+')
         grafico.write('graph G{\n')
@@ -412,9 +420,9 @@ class Ventana(QMainWindow):
         grafico.write('nodo4[label="Robot utilizado: {}"];\n\n\n\n'.format(RC))
         grafico.write('}\n}\n')
         grafico.close()
-        os.system('dot.exe -Tpng graficapatron.dot -o '+ciudad.nombre+'_reporteRES.png')
-        os.system('dot.exe -Tpdf graficapatron.dot -o '+ciudad.nombre+'_reporteRES.pdf')
-        os.startfile(ciudad.nombre+'_reporteRES.pdf') 
+        os.system('dot.exe -Tpng graficapatron.dot -o '+ciudad.nombre+'_reporteEXT.png')
+        os.system('dot.exe -Tpdf graficapatron.dot -o '+ciudad.nombre+'_reporteEXT.pdf')
+        os.startfile(ciudad.nombre+'_reporteEXT.pdf') 
 
     
     def impri1(self):

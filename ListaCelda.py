@@ -62,13 +62,26 @@ class ListaCelda():
             print('Coordenada no encontrada')
             return None
         
-    def BusPE(self):
+    def BusPEF(self):
         contador=0
         try:
             tmp = self.inicio2
             while tmp != None:
                 if tmp.caracter == "E" :
-                    return tmp.coordefila,tmp.coordecolumna
+                    return tmp.coordecolumna
+                tmp = tmp.siguien
+            return None
+        except: 
+            print('Coordenada no encontrada')
+            return None
+
+    def BusPEC(self):
+        contador=0
+        try:
+            tmp = self.inicio2
+            while tmp != None:
+                if tmp.caracter == "E" :
+                    return tmp.coordecolumna
                 tmp = tmp.siguien
             return None
         except: 
