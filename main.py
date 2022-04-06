@@ -41,6 +41,12 @@ class Ventana(QMainWindow):
         self.label_8.setVisible(False)
         self.label_9.setVisible(False)
         self.label_10.setVisible(False)
+        self.label_11.setVisible(False)
+        self.label_12.setVisible(False)
+        self.label_13.setVisible(False)
+        self.label_14.setVisible(False)
+        self.label_15.setVisible(False)
+        self.label_16.setVisible(False)
         self.lineEdit.setVisible(False)
         self.lineEdit_2.setVisible(False)
         self.lineEdit_3.setVisible(False)
@@ -48,6 +54,10 @@ class Ventana(QMainWindow):
         self.lineEdit_5.setVisible(False)
         self.lineEdit_6.setVisible(False)
         self.lineEdit_7.setVisible(False)
+        self.lineEdit_8.setVisible(False)
+        self.lineEdit_9.setVisible(False)
+        self.lineEdit_10.setVisible(False)
+        self.lineEdit_11.setVisible(False)
         self.pushButton_6.setVisible(False)
         self.pushButton_9.setVisible(False)
         self.pushButton_10.setVisible(False)
@@ -68,16 +78,17 @@ class Ventana(QMainWindow):
         elem = ciudades.getCiudad(nombre)
         ob=elem.lista_celda.Bus("R")
         os=elem.lista_celda.Bus("E")
-        global robots1,fila1,columna1
+        global robots1,fila1,columna1,entradaF1,entradaC1
         robots1=" "
         fila1=" "
         columna1=" "
+        entradaF1=" "
+        entradaC1=" "
         if os!=None:
             if ob!=None:
                 aja= elem.lista_celda.BusUni("R")
-                print("Unidadrecurso: ",aja)
                 aja1=robot.RobotExCont()
-                print("UnidadRobts: ",aja1)
+                aja2= elem.lista_celda.BusUni("E")
                 if aja>1:
                     self.label_6.setVisible(True)
                     self.label_9.setVisible(True)
@@ -92,10 +103,19 @@ class Ventana(QMainWindow):
                     self.lineEdit_4.setVisible(True)
                 else:
                     robots1=robot.RobotResNom1()
+                if aja2>1:
+                    self.label_14.setVisible(True)
+                    self.label_15.setVisible(True)
+                    self.label_16.setVisible(True)
+                    self.lineEdit_10.setVisible(True)
+                    self.lineEdit_11.setVisible(True)
+                else:
+                    entradaF1=elem.lista_celda.BusPEF()
+                    entradaC1=elem.lista_celda.BusPEC()
                 self.pushButton_10.setVisible(True)
                 self.pushButton_10.clicked.connect(self.Extraccion)
             else:
-                messagebox.showwarning("Alert","No hay recursos en esta ciudad por lo tanto no se puede hacer esta misión")
+                messagebox.showwarning("Alert","Mision Imposible(No hay recursos en esta ciudad)")
         else:
             messagebox.showwarning("Alert","No hay puntos de entrada en esta ciudad por lo tanto no se puede hacer esta misión")
 
@@ -114,16 +134,17 @@ class Ventana(QMainWindow):
         elem = ciudades.getCiudad(nombre)
         ob=elem.lista_celda.Bus("C")
         os=elem.lista_celda.Bus("E")
-        global robots,fila,columna
+        global robots,fila,columna,entradaF,entradaC
         robots=" "
         fila=" "
         columna=" "
+        entradaF=" "
+        entradaC=" "
         if os!=None:
             if ob!=None:
                 aja= elem.lista_celda.BusUni("C")
-                print("Unidadcivil: ",aja)
                 aja1=robot.RobotResCont()
-                print("UnidadRobts: ",aja1)
+                aja2= elem.lista_celda.BusUni("E")
                 if aja>1:
                     self.label_4.setVisible(True)
                     self.label_7.setVisible(True)
@@ -138,10 +159,19 @@ class Ventana(QMainWindow):
                     self.lineEdit_2.setVisible(True)
                 else:
                     robots=robot.RobotResNom()
+                if aja2>1:
+                    self.label_11.setVisible(True)
+                    self.label_12.setVisible(True)
+                    self.label_13.setVisible(True)
+                    self.lineEdit_8.setVisible(True)
+                    self.lineEdit_9.setVisible(True)
+                else:
+                    entradaF=elem.lista_celda.BusPEF()
+                    entradaC=elem.lista_celda.BusPEC()
                 self.pushButton_9.setVisible(True)
                 self.pushButton_9.clicked.connect(self.Rescate)
             else:
-                messagebox.showwarning("Alert","No hay unidades civiles en esta ciudad por lo tanto no se puede hacer esta misión")
+                messagebox.showwarning("Alert","Mision Imposible(No hay unidades civiles en esta ciudad)")
         else:
             messagebox.showwarning("Alert","No hay puntos de entrada en esta ciudad por lo tanto no se puede hacer esta misión")
 
@@ -292,6 +322,8 @@ class Ventana(QMainWindow):
         UCF=self.lineEdit_3.text()
         UCC=self.lineEdit_6.text()
         RC=self.lineEdit_2.text()
+        PEF=self.lineEdit_8.text()
+        PEC=self.lineEdit_9.text()
         print(RC)
         if fila!=" ":
             UCF=fila
@@ -299,8 +331,11 @@ class Ventana(QMainWindow):
             UCC=columna
         if robots!=" ":
             RC=robots
-        PEF = ciudad.lista_celda.BusPEF()
-        PEC = ciudad.lista_celda.BusPEC()
+        if entradaF!=" ":
+            PEF=entradaF
+        if entradaC!=" ":
+            PEC=entradaC  
+        
         if PEF!=None:
             pass
         else: 
@@ -352,7 +387,9 @@ class Ventana(QMainWindow):
         grafico.write('nodo1[label="Tipo de misión: rescate"];\n\n\n\n')
         grafico.write('nodo2[label="Unidad civil rescatada fila: {}"];\n\n\n\n'.format(UCF))
         grafico.write('nodo3[label="Unidad civil rescatada columna: {}"];\n\n\n\n'.format(UCC))
-        grafico.write('nodo4[label="Robot utilizado: {}"];\n\n\n\n'.format(RC))
+        grafico.write('nodo4[label="Punto de entrada fila: {}"];\n\n\n\n'.format(PEF))
+        grafico.write('nodo5[label="Punto de entrada columna: {}"];\n\n\n\n'.format(PEC))
+        grafico.write('nodo6[label="Robot utilizado: {}"];\n\n\n\n'.format(RC))
         grafico.write('}\n}\n')
         grafico.close()
         os.system('dot.exe -Tpng graficapatron.dot -o '+ciudad.nombre+'_reporteRES.png')
@@ -365,6 +402,8 @@ class Ventana(QMainWindow):
         UCF=self.lineEdit_5.text()
         UCC=self.lineEdit_7.text()
         RC=self.lineEdit_4.text()
+        PEF=self.lineEdit_10.text()
+        PEC=self.lineEdit_11.text()
         print(RC)
         if fila1!=" ":
             UCF=fila1
@@ -372,11 +411,11 @@ class Ventana(QMainWindow):
             UCC=columna1
         if robots1!=" ":
             RC=robots1
-        PE = ciudad.lista_celda.BusPE()
-        if PE!=None:
-            print(PE)
-        else: 
-            messagebox.showwarning("Alert","No se encontro el punto de entrada en esta ciudad por lo tanto no se puede hacer esta misión")
+        if entradaF1!=" ":
+            PEF=entradaF1
+        if entradaC1!=" ":
+            PEC=entradaC1
+    
         count = 0
         grafico = open("graficapatron.dot", 'w+')
         grafico.write('graph G{\n')
@@ -417,7 +456,9 @@ class Ventana(QMainWindow):
         grafico.write('nodo1[label="Tipo de misión: extraccion de recursos"];\n\n\n\n')
         grafico.write('nodo2[label="Fila de recurso extraido: {}"];\n\n\n\n'.format(UCF))
         grafico.write('nodo3[label="Columna de recurso extraido: {}"];\n\n\n\n'.format(UCC))
-        grafico.write('nodo4[label="Robot utilizado: {}"];\n\n\n\n'.format(RC))
+        grafico.write('nodo4[label="Punto de entrada fila: {}"];\n\n\n\n'.format(PEF))
+        grafico.write('nodo5[label="Punto de entrada columna: {}"];\n\n\n\n'.format(PEC))
+        grafico.write('nodo6[label="Robot utilizado: {}"];\n\n\n\n'.format(RC))
         grafico.write('}\n}\n')
         grafico.close()
         os.system('dot.exe -Tpng graficapatron.dot -o '+ciudad.nombre+'_reporteEXT.png')
